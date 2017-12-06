@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Storm Damage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<style>
+    #carousel {
+        width: 100%;
+        height: 150px;
+        background-color: #ff0000;
+        
+        overflow: visible;
+        white-space:nowrap;
+    }
+
+    #carousel .slide {
+        display: inline-block;
+    }
+
+    #h5 {
+        font-size: 20px;
+        text-align: center;
+        width: 100%;
+    }
+    .horizontal_dotted_line{
+        border-bottom: 1px dotted black;
+        width: 90vw!important;
+    } 
+</style>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Logo and responsive toggle -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbar">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="#">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">Sources</a>
+                    </li>
+                </ul>
+
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+	<div class="jumbotron feature">
+		<div class="container">
+			<h1><span class="glyphicon glyphicon-cloud"></span> CS109a Final Project: Group 90</h1>
+			<p>Predicting Damage of US Storms to Better Allocate Relief Resources</p>
+            <p>By: George Hu, Josh Kuppersmith, Manav Khandelwal, and Evan Mackay</p>
+            <p>Date: December 7, 2017</p>
+		</div>
+	</div>
+
+    <!-- Content -->
+    <div class="container">
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Introduction
+                    <small>Motivation for this Project</small>
+                </h1>
+                <p>Over this past year, the United States has been ravaged by numerous natural disasters. From Hurricanes Irma and Harvey, to tornadoes in the Ohio Valley and a particularly costly hailstorm in Denver, to landslides on the Pacific coast, these disasters have taken a toll on communities across the country. Hurricane Harvey, the most costly hurricane ever recorded, alone accounted for $200 billion in damage on US soil, plus untold damage in the Caribbean. According to the National Center for Environmental Information, there were 14 storm events this year that cost the US over $1B. This list includes hurricanes, droughts, fires, floods, hailstorms, and tornadoes. With rapid climate change, these events may be becoming more common and more costly. Now, more than ever, it is crucial for federal, state, and local governments to utilize resources well to aid citizens in the wake of these storms. This problem, and a desire to help this effort for efficient resource allocation motivated our project. </p>
+
+                <br></br>
+
+
+
+                <div class="w3-container">
+                  <h5>Storm Damage Images</h5>
+                </div>
+
+                <div class="w3-content w3-display-container"  style="width:75vw!important">
+
+                <div class="w3-display-container mySlides">
+                  <img src="harvey.jpg" style="width:100%">
+                  <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
+                    Hurricane Harvey (Houston)
+                  </div>
+                </div>
+
+                <div class="w3-display-container mySlides">
+                  <img src="mudslide.jpg" style="width:100%">
+                  <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
+                    Pacific Coast Mudslide (CA)
+                  </div>
+                </div>
+
+                <div class="w3-display-container mySlides">
+                  <img src="hail.jpg" style="width:100%">
+                  <div class="w3-display-topleft w3-large w3-container w3-padding-16 w3-black">
+                    Hail Storm (Midwest)
+                  </div>
+                </div>
+
+                <div class="w3-display-container mySlides">
+                  <img src="flood.jpg" style="width:100%">
+                  <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
+                    Flooding (Alabama)
+                  </div>
+                </div>
+
+                <div class="w3-display-container mySlides">
+                  <img src="tornado.jpg" style="width:100%">
+                  <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
+                    Tornado (Kansas)
+                  </div>
+                </div>
+
+                <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+
+                </div>
+
+                
+                <h1 class="page-header">Project Objectives</h1>
+
+                <p>Our aim is to accurately predict the amount of damage, in US dollars, that a storm will cause, so disaster response groups like FEMA know exactly how much resources to devote to relief. Our objective is to make this prediction immediately after a storm hits, before we are aware of how many people died or how much initial damage there was. This way, we can help groups like FEMA take action as quickly as possible.</p>
+
+                <h1 class="page-header">Data Source</h1>
+
+                <p>We obtained our dataset from the United States National Oceanic and Atmospheric Administration (NOAA), which is a reputable governmental organization responsible for alerting the population about dangerous weather events. This organization is the leading source of weather information in the US, and we are confident that the data we are using is reliable since the NOAA, as one of the seven uniformed services, is held to the same procedural standards as the US Army, Navy, and Air Force. Furthermore, the NOAA is well-positioned to collect data because it has extensive resources. It oversees 120 Weather Forecast Offices (WFO’s) across the country and has access to all of the leading technology in the industry, such as weather balloons and weather planes. For the reasons outlined above, we believe strongly in the validity of the dataset we are using.</p>
+
+
+                <p>The NOAA has compiled a storm events database for every year since 1950. In the 1950’s, only several hundred observations were recorded each year, but in more recent times, over 40,000 storms have been documented annually. There were 42,971 logged storms in 2016, and 45,592 so far in 2017 through the end of November (the database is updated monthly). For each storm, the NOAA provides information about the storm type (thunderstorm, flood, hail storm, etc.), date, location, and much more. Please refer to the “Predictor Variables” and “Response Variables” sections below for a deeper dive into the storm recordings.</p>
+
+
+                <p>Note that this database does not contain information about the most catastrophic of storms (large Atlantic hurricanes), but we believe that excluding these outlier data points is best for our modeling. To predict hurricane damage, we would likely have to build a completely separate model accounting for more information about trajectory and hurricane characteristics. Instead, we will only be comparing storms of relatively similar scale and caliber, which helps validate the model, and also allows for more useful predictions.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Introduction of Demographic Data
+                </h1>
+                <p>We recognized that, to predict the cost of property damage a storm will create, information that merely encompasses location was not enough--we needed to know how many people live near the site of the storm, and also how much property they own. We hypothesized that the population density and average income of an area would both be positively correlated with the cost of damage and add to the predictive power of our model. We thus looked for external demographic data to incorporate into our existing dataset.</p>
+
+                <p>In the “uszipcode” python package (credit: Sanhe Hu), we found all of the information that we were looking for. One of the package’s functionalities is taking latitude and longitude, which our original dataset provided, and returning a list of zipcodes within a certain mile-wide radius of those coordinates. We were able to take the first zipcode area listed, which was the closest one to the given coordinates by Euclidean distance, and grab the demographic data of that area as per the 2010 census. The final data categories we selected were population density, population, and average income per person (per household was not available). We were skeptical of this package at first since it was created by a third-party user, but we then validated the package on all four of our hometowns (Chicago, IL; Vero Beach, FL; Philadelphia, PA; and Los Angeles, CA) and confirmed that the results made sense. For instance, we checked to make sure that more wealthy areas around the cities we knew best had higher average incomes, and so on.</p>
+            </div>
+        </div>
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Exploratory Data Analysis
+                    <small>Key Findings</small>
+                </h1>
+                <p>The first step in our analysis of storms in the US is to create some visuals in order to gain some intuition for what our data looks like, and which factors may be predictive for storm damage. Here are some key visuals, and explanations of the main findings:</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Feature Row -->
+        <h3>
+            <a href="#">Figure 1</a>
+        </h3>
+        <div class="row">
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="eda_hour.png" alt="">
+                </a>
+                
+                <p>Displays the frequency of damage-causing storms by hour. We can see clearly that there are more damage-causing storms in the afternoon (perhaps because of human trafffic), and there is a natural curve of frequency based on the time of day.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <h3>
+            <a href="#">Figure 2</a>
+        </h3>
+        <div class="row">
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="eda_month.png" alt="">
+                </a>
+                
+                <p>Displays the frequency of damage-causing storms by month in 2016. We can see that July is the month with the most damaging storms, and there is certainly correlation between month and storm damage. This inuitively makes sense, especially since each month will have different types of storms.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+        
+        <h3>
+            <a href="#">Figure 3</a>
+        </h3>
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="eda_storm_type.png" >
+                </a>
+
+                <p>Here we see average damage based on type of storm. Hail storms have extremely high damage, costing ~$35000 per storm. This is likely due to car damage, and may explain why damaging storms tend to occur more in the afternoon. We see that marine storms cost very little, because there is no property to damage. Clearly, the type of storm will be a strong predictor for damage (especially when regressing).</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <h3>
+            <a href="#">Figure 4</a>
+        </h3>
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="eda_state_freq.png" >
+                </a>
+
+                <p>This graph shows frequency of storms by state, and we see that Texas by far has the most recorded storms. Due to the enormous land mass of Texas, this makes sense.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <h3>
+            <a href="#">Figure 5</a>
+        </h3>
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="eda_state_damage.png" >
+                </a>
+
+                <p>This graph shows frequency of <i>damage-causing</i> storms by statee. It can clearly be contrasted with the graph above of storm damage by state. This time, Mississippi has the highest frequency, so the factors influencing damage ae not the same as those influencing storms. Perhaps Texas has many small, harmless thunderstorms, but storms in Alabama tend to cause flooding or other damage. Geography will be an important factor in prediction.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+
+        <!-- Feature Row -->
+        <div class="row">
+
+            
+            <article class="col-md-4 article-intro">
+                <a href="#">
+                <h3>
+                <a href="#">Figure 6</a>
+            </h3>
+                    <img class="img-responsive img-rounded" src="storm_type.png" alt="">
+                </a>
+                
+                <p>Shows storm types in our dataset. The legend lists storm freq., and we see trends like Marine Thunderstorms all along the Atlantic Coast and debris flow (mudslides) on the Pacific Coast. Hail, Thunderstorms, and Floods are widespread, but certainly show some clustering and regional differences.</p>
+            </article>
+            
+            <article class="col-md-4 article-intro">
+                <a href="#">
+                <h3>
+                <a href="#">Figure 7</a>
+            </h3>
+                    <img class="img-responsive img-rounded" src="heatmap.png" alt="">
+                </a>
+                <p>This is a Google Maps heatmap showing distribution of all storm data across the US. It is important to see that our storms are concentrated East of the Rockies (perhaps simply due to reporting). Additionally, there is a concentration of storms along the Gulf of Mexico, and in Tornado Alley.</p>
+            </article>
+            
+            <article class="col-md-4 article-intro">
+                <a href="#">
+                <h3>
+                <a href="#">Figure 8</a>
+            </h3>
+                    <img class="img-responsive img-rounded" src="damage_likelihood.png" alt="">
+                </a>
+                
+                <p>This Carto images shows likelihood of a storm causing monetary damage. Dark squares means that most storms cause some damage. We see clear regional trends in where damage is caused like in the Ohio River Valley and along the SW southern border. Clearly, damage has spatial trends, which makes the other graphs here clearly relevant to our predictive power.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <h3>
+            <a href="#">Figure 9</a>
+        </h3>
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:90vw!important">
+                <a href="#">
+                    <img class="img-responsive img-rounded" src="normalize.png" >
+                </a>
+
+                <p>The graphs above are a histogram of the DAMAGE_TOTAL variable (left), a histogram of the transformed DAMAGE_TOTAL variable using natural logarithm (center), and a histogram of the transformed DAMAGE_TOTAL variable conditioning on whether there was any damage at all (right). The normality exhibited in the third graph lets us know that if we build a classification model to predict any damage, and then regress conditional on that, we could have success predicting the log of DAMAGE_TOTAL because our response would be symmetric.</p>
+            </article>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Key Variables
+                    <small>Predictors and Response</small>
+                </h1>
+                <p>Predictor Variables: Our original dataset came with 40 potential predictor variables: 2 were indexing variables (e.g. EVENT_ID), 7 were related to date/time, and nearly all of the rest were categorical or ordinal variables such as EVENT_TYPE or STATE. We recognized that we should one-hot encode a number of these variables, so we conducted EDA on them, seeing whether there was potential significance in their effect on DAMAGE_PROPERTY/HAS_DAMAGE. This analysis is shown below in Figure _ (state of location), Figure _ (month of occurrence), and Figure _ (time of day).</p>
+                <p>Response Variables: Our original dataset came with 2 response variables, DAMAGE_PROPERTY and DAMAGE_CROPS, both of which were measured in dollars ($). We decided to sum these two variables to create one response variable called DAMAGE_TOTAL, also measured in $. Finally, we created HAS_DAMAGE, a binary variable analogous to the IS_DELAYED variable from the midterm. We realized early on that DAMAGE_TOTAL would have a very skewed distribution. We describe how we dealt with this issue on _____.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Modeling Damage or Not
+                    <small>Classification</small>
+                </h1>
+                <p>The next step in this model is to use regressions to predict monetary damage, in dollars. This step is crucial for making recommendations on the proper amount of aid required for storm relief.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Modeling Monetary Damage
+                    <small>Regression</small>
+                </h1>
+                <p>The next step in this model is to use regressions to predict monetary damage, in dollars. This step is crucial for making recommendations on the proper amount of aid required for storm relief.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Conclusion
+                    <small>Findings and Recommendations</small>
+                </h1>
+                <p>Throughout this project, we had the goal of predicting storm damage.</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+	
+	<footer>
+
+        
+        <div class="small-print">
+        	<div class="container">
+        		<p>Thanks for reading! We hope you enjoyed.</p>
+        	</div>
+        </div>
+	</footer>
+
+	
+    <!-- jQuery -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+	
+	<!-- IE10 viewport bug workaround -->
+	<script src="js/ie10-viewport-bug-workaround.js"></script>
+	
+	<!-- Placeholder Images -->
+	<script src="js/holder.min.js"></script>
+    <script>
+    var slideIndex = 1;
+    showDivs(slideIndex);
+
+    function plusDivs(n) {
+      showDivs(slideIndex += n);
+    }
+
+    function showDivs(n) {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      if (n > x.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = x.length}
+      for (i = 0; i < x.length; i++) {
+         x[i].style.display = "none";  
+      }
+      x[slideIndex-1].style.display = "block";  
+    }
+    </script>
+	
+</body>
+
+</html>
