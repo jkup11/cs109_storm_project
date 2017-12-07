@@ -74,6 +74,21 @@
                     <li class="active">
                         <a href="#">Home</a>
                     </li>
+                    <li class="active">
+                        <a href="#introduction">Introduction</a>
+                    </li>
+                    <li class="active">
+                        <a href="#eda">EDA</a>
+                    </li>
+                    <li class="active">
+                        <a href="#classification">Classification</a>
+                    </li>
+                    <li class="active">
+                        <a href="#regression">Regression</a>
+                    </li>
+                    <li class="active">
+                        <a href="#conclusion">Conclusion</a>
+                    </li>
                 </ul>
 
             </div>
@@ -97,7 +112,10 @@
         <!-- Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Introduction
+
+                <div id = 'introduction'></div>
+                <br></br>
+                <h1 class="page-header">1. Introduction
                     <small>Motivation for this Project</small>
                 </h1>
                 <p>Over this past year, the United States has been ravaged by numerous natural disasters. From Hurricanes Irma and Harvey, to tornadoes in the Ohio Valley and a particularly costly hailstorm in Denver, to landslides on the Pacific coast, these disasters have taken a toll on communities across the country. Hurricane Harvey, the most costly hurricane ever recorded, alone accounted for $200 billion in damage on US soil, plus untold damage in the Caribbean. According to the National Center for Environmental Information, there were 14 storm events this year that cost the US over $1B. This list includes hurricanes, droughts, fires, floods, hailstorms, and tornadoes. With rapid climate change, these events may be becoming more common and more costly. Now, more than ever, it is crucial for federal, state, and local governments to utilize resources well to aid citizens in the wake of these storms. This problem, and a desire to help this effort for efficient resource allocation motivated our project. </p>
@@ -153,11 +171,11 @@
                 </div>
 
                 
-                <h1 class="page-header">Project Objectives</h1>
+                <h1 class="page-header">1.1) Project Objectives</h1>
 
                 <p>Our aim is to accurately predict the amount of damage, in US dollars, that a storm will cause, so disaster response groups like FEMA know exactly how much resources to devote to relief. Our objective is to make this prediction immediately after a storm hits, before we are aware of how many people died or how much initial damage there was. This way, we can help groups like FEMA take action as quickly as possible.</p>
 
-                <h1 class="page-header">Data Source</h1>
+                <h1 class="page-header">1.2) Data Source</h1>
 
                 <p>We obtained our dataset from the United States National Oceanic and Atmospheric Administration (NOAA), which is a reputable governmental organization responsible for alerting the population about dangerous weather events. This organization is the leading source of weather information in the US, and we are confident that the data we are using is reliable since the NOAA, as one of the seven uniformed services, is held to the same procedural standards as the US Army, Navy, and Air Force. Furthermore, the NOAA is well-positioned to collect data because it has extensive resources. It oversees 120 Weather Forecast Offices (WFO’s) across the country and has access to all of the leading technology in the industry, such as weather balloons and weather planes. For the reasons outlined above, we believe strongly in the validity of the dataset we are using.</p>
 
@@ -166,172 +184,8 @@
 
 
                 <p>Note that this database does not contain information about the most catastrophic of storms (large Atlantic hurricanes), but we believe that excluding these outlier data points is best for our modeling. To predict hurricane damage, we would likely have to build a completely separate model accounting for more information about trajectory and hurricane characteristics. Instead, we will only be comparing storms of relatively similar scale and caliber, which helps validate the model, and also allows for more useful predictions.</p>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Introduction of Demographic Data
-                </h1>
-                <p>We recognized that, to predict the cost of property damage a storm will create, information that merely encompasses location was not enough--we needed to know how many people live near the site of the storm, and also how much property they own. We hypothesized that the population density and average income of an area would both be positively correlated with the cost of damage and add to the predictive power of our model. We thus looked for external demographic data to incorporate into our existing dataset.</p>
-
-                <p>In the “uszipcode” python package (credit: Sanhe Hu), we found all of the information that we were looking for. One of the package’s functionalities is taking latitude and longitude, which our original dataset provided, and returning a list of zipcodes within a certain mile-wide radius of those coordinates. We were able to take the first zipcode area listed, which was the closest one to the given coordinates by Euclidean distance, and grab the demographic data of that area as per the 2010 census. The final data categories we selected were population density, population, and average income per person (per household was not available). We were skeptical of this package at first since it was created by a third-party user, but we then validated the package on all four of our hometowns (Chicago, IL; Vero Beach, FL; Philadelphia, PA; and Los Angeles, CA) and confirmed that the results made sense. For instance, we checked to make sure that more wealthy areas around the cities we knew best had higher average incomes, and so on.</p>
-            </div>
-        </div>
-
-        <!-- Heading -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Exploratory Data Analysis
-                    <small>Key Findings</small>
-                </h1>
-                <p>The first step in our analysis of storms in the US is to create some visuals in order to gain some intuition for what our data looks like, and which factors may be predictive for storm damage. Here are some key visuals, and explanations of the main findings:</p>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Feature Row -->
-        <h3>
-            <a href="#">Figure 1</a>
-        </h3>
-        <div class="row">
-            <article class="col-md-4 article-intro" style="width:75vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/eda_hour.png" alt="">
-                </a>
-                
-                <p>Displays the frequency of damage-causing storms by hour. We can see clearly that there are more damage-causing storms in the afternoon (perhaps because of human trafffic), and there is a natural curve of frequency based on the time of day.</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-
-        <h3>
-            <a href="#">Figure 2</a>
-        </h3>
-        <div class="row">
-            <article class="col-md-4 article-intro" style="width:75vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/eda_month.png" alt="">
-                </a>
-                
-                <p>Displays the frequency of damage-causing storms by month in 2016. We can see that July is the month with the most damaging storms, and there is certainly correlation between month and storm damage. This inuitively makes sense, especially since each month will have different types of storms.</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-        
-        <h3>
-            <a href="#">Figure 3</a>
-        </h3>
-        <div class="row">
-
-            <article class="col-md-4 article-intro" style="width:75vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/eda_storm_type.png" >
-                </a>
-
-                <p>Here we see average damage based on type of storm. Hail storms have extremely high damage, costing ~$35000 per storm. This is likely due to car damage, and may explain why damaging storms tend to occur more in the afternoon. We see that marine storms cost very little, because there is no property to damage. Clearly, the type of storm will be a strong predictor for damage (especially when regressing).</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-
-        <h3>
-            <a href="#">Figure 4</a>
-        </h3>
-        <div class="row">
-
-            <article class="col-md-4 article-intro" style="width:75vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/eda_state_freq.png" >
-                </a>
-
-                <p>This graph shows frequency of storms by state, and we see that Texas by far has the most recorded storms. Due to the enormous land mass of Texas, this makes sense.</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-
-        <h3>
-            <a href="#">Figure 5</a>
-        </h3>
-        <div class="row">
-
-            <article class="col-md-4 article-intro" style="width:75vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/eda_state_damage.png" >
-                </a>
-
-                <p>This graph shows frequency of <i>damage-causing</i> storms by statee. It can clearly be contrasted with the graph above of storm damage by state. This time, Mississippi has the highest frequency, so the factors influencing damage ae not the same as those influencing storms. Perhaps Texas has many small, harmless thunderstorms, but storms in Alabama tend to cause flooding or other damage. Geography will be an important factor in prediction.</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-
-
-        <!-- Feature Row -->
-        <div class="row">
-
-            
-            <article class="col-md-4 article-intro">
-                <a href="#">
-                <h3>
-                <a href="#">Figure 6</a>
-            </h3>
-                    <img class="img-responsive" src="images2/storm_type.png" alt="">
-                </a>
-                
-                <p>Shows storm types in our dataset. The legend lists storm freq., and we see trends like Marine Thunderstorms all along the Atlantic Coast and debris flow (mudslides) on the Pacific Coast. Hail, Thunderstorms, and Floods are widespread, but certainly show some clustering and regional differences.</p>
-            </article>
-            
-            <article class="col-md-4 article-intro">
-                <a href="#">
-                <h3>
-                <a href="#">Figure 7</a>
-            </h3>
-                    <img class="img-responsive" src="images2/heatmap.png" alt="">
-                </a>
-                <p>This is a Google Maps heatmap showing distribution of all storm data across the US. It is important to see that our storms are concentrated East of the Rockies (perhaps simply due to reporting). Additionally, there is a concentration of storms along the Gulf of Mexico, and in Tornado Alley.</p>
-            </article>
-            
-            <article class="col-md-4 article-intro">
-                <a href="#">
-                <h3>
-                <a href="#">Figure 8</a>
-            </h3>
-                    <img class="img-responsive" src="images2/damage_likelihood.png" alt="">
-                </a>
-                
-                <p>This Carto images shows likelihood of a storm causing monetary damage. Dark squares means that most storms cause some damage. We see clear regional trends in where damage is caused like in the Ohio River Valley and along the SW southern border. Clearly, damage has spatial trends, which makes the other graphs here clearly relevant to our predictive power.</p>
-            </article>
-        </div>
-
-        <div class="horizontal_dotted_line"></div>
-        <div class="horizontal_dotted_line"></div>
-
-        <h3>
-            <a href="#">Figure 9</a>
-        </h3>
-        <div class="row">
-
-            <article class="col-md-4 article-intro" style="width:90vw!important">
-                <a href="#">
-                    <img class="img-responsive" src="images2/normalize.png" >
-                </a>
-
-                <p>The graphs above are a histogram of the DAMAGE_TOTAL variable (left), a histogram of the transformed DAMAGE_TOTAL variable using natural logarithm (center), and a histogram of the transformed DAMAGE_TOTAL variable conditioning on whether there was any damage at all (right). The normality exhibited in the third graph lets us know that if we build a classification model to predict any damage, and then regress conditional on that, we could have success predicting the log of DAMAGE_TOTAL because our response would be symmetric.</p>
-            </article>
-        </div>
-
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">Key Variables
+                <h1 class="page-header">1.3) Key Variables
                     <small>Predictors and Response</small>
                 </h1>
                 <p>Predictor Variables: Our original dataset came with 40 potential predictor variables: 2 were indexing variables (e.g. EVENT_ID), 7 were related to date/time, and nearly all of the rest were categorical or ordinal variables such as EVENT_TYPE or STATE. We recognized that we should one-hot encode a number of these variables, so we conducted EDA on them, seeing whether there was potential significance in their effect on DAMAGE_PROPERTY/HAS_DAMAGE. This analysis is shown below in Figure _ (state of location), Figure _ (month of occurrence), and Figure _ (time of day).</p>
@@ -341,57 +195,282 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Modeling Damage or Not
+                <h1 class="page-header">1.4) Introduction of Demographic Data
+                </h1>
+                <p>We recognized that, to predict the cost of property damage a storm will create, information that merely encompasses location was not enough--we needed to know how many people live near the site of the storm, and also how much property they own. We hypothesized that the population density and average income of an area would both be positively correlated with the cost of damage and add to the predictive power of our model. We thus looked for external demographic data to incorporate into our existing dataset.</p>
+
+                <p>In the “uszipcode” python package (credit: Sanhe Hu), we found all of the information that we were looking for. One of the package’s functionalities is taking latitude and longitude, which our original dataset provided, and returning a list of zipcodes within a certain mile-wide radius of those coordinates. We were able to take the first zipcode area listed, which was the closest one to the given coordinates by Euclidean distance, and grab the demographic data of that area as per the 2010 census. The final data categories we selected were population density, population, and average income per person (per household was not available). We were skeptical of this package at first since it was created by a third-party user, but we then validated the package on all four of our hometowns (Chicago, IL; Vero Beach, FL; Philadelphia, PA; and Los Angeles, CA) and confirmed that the results made sense. For instance, we checked to make sure that more wealthy areas around the cities we knew best had higher average incomes, and so on.</p>
+            </div>
+        </div>
+
+        <div id = 'eda'></div>
+        <br></br>
+
+        <!-- Heading -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">2. Exploratory Data Analysis
+                    <small>Key Findings</small>
+                </h1>
+                <p>The first step in our analysis of storms in the US is to create some visuals in order to gain some intuition for what our data looks like, and which factors may be predictive for storm damage. Here are some key visuals, and explanations of the main findings:</p>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <br></br>
+        <!-- Feature Row -->
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.1) Storm Type Exploration</h7>
+
+        <div class="row">
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+            <br></br>
+                <p>The first predictor we were curious to explore was storm type, since our previous experiences (e.g. hearing about storms on the news) led us to believe that tornados and floods were the most costly types of storms. We wanted to confirm this hypothesis, as well as others, about storm type, and so we generated plots showing (1) which storm type accounted for the highest number of damage-causing storms and (2) which storm type caused the most damage (in dollars) on a per-storm basis. These two plots are displayed below.</p>
+
+                <img class="img-responsive" src="images2/freq_damage_storm_type.png" alt="">
+                <br></br>
+                <img class="img-responsive" src="images2/ave_damage_storm_type.png" alt="">
+                <br></br>
+                
+                <p>Contrary to what we believed, thunderstorm winds accounted for the highest number of damaging storms, with floods (and flash floods) accounting for the second highest number. As we predicted, floods caused the most damage per storm of all of the storm types. After conducting qualitative research, our logical conclusions for these findings are that tornadoes do not cause a lot of damage because they tend to take place in sparsely populated areas in the Midwest (particularly in a region colloquially called “Tornado Alley”), and also that winds can cause a lot of damage by downing trees and power lines. Our reasoning for the damaging nature of floods is that replacing flooring can be very expensive (upwards of thousands of dollars per home).</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <br></br>
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.2) Location Data Exploration</h7>
+
+        <div class="row">
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+            <br></br>
+                <p>Diving deeper into our dataset, the next thing we noticed was how much information about location the dataset contained. From time zone to state to municipality (WFO), to begin_long, begin_lat, end_long, and end_lat, we counted 17 potential predictors in total that corresponded to locational data. To gain better intuition about them, and also figure out which ones to drop to avoid overfitting on location, we checked which predictors had clear correlations with the frequency of damage-causing storms. In the three figures below, we display which timezones, states, and municipalities recorded the most damage-causing storms. We decided that each of these three predictors were important and should be kept in our model. We describe which predictors we dropped in the next section (Dropping Predictors).</p>
+                <br></br>
+                    <img class="img-responsive" src="images2/freq_damage_timezone.png" alt="">
+                <br></br>
+                    <img class="img-responsive" src="images2/freq_damage_state.png" alt="">
+                <br></br>
+                    <img class="img-responsive" src="images2/freq_damage_wfo.png" alt="">
+                <br></br>
+
+                <p>Above, we see that most damage-causing storms take place in the Central and Eastern Time Zones. We were surprised that there were so many more storms here compared with the Pacific and Mountain Time Zones, but these results ultimately make sense because thunderstorms accounted for the highest number of damaging storms, and most thunderstorms take place on the east coast where it is more humid than the west coast. Next, we concluded that state was a promising predictor since some states have many more storm recordings than others. For instance, Pennsylvania had the most storms with over 1,500 storms while Oregon had fewer than 30 storms. We made the same conclusion for WFO (Municipality), with some municipalities having much more storms than others. The municipality with the highest damaging storm count by far is JAN, which corresponds to Jackson, Mississippi. Mississippi was the state with the second highest number of damaging storms, so this result made sense.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <br></br>
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.3) Temporal Data Exploration</h7>
+
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+
+                <br></br>
+                <p>Finally, we checked temporal information like month and time of day, both of which had a significant impact on the frequency of damaging storms.</p>
+                <br></br>
+                    <img class="img-responsive" src="images2/freq_damage_month.png" >
+                <br></br>
+                    <img class="img-responsive" src="images2/freq_damage_hour.png" >
+                <br></br>
+
+                <p>As we can see, more storms take place during the summer months, which leads us to believe that thunderstorms are more damaging than snowstorms, etc. Also, more storms take place in the afternoon and evening hours, which is surprising since storms take place around the clock. Our conclusion from this result is that people tend to log storm damage in the waking hours of the day. More importantly than the logical reasoning behind these temporal predictors, we confirm that we want to keep them as predictors in our models. </p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <br></br>
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.4) Map Visualizations</h7>
+
+        <!-- Feature Row -->
+        <div class="row">
+
+            
+            <article class="col-md-4 article-intro">
+                <h3>
+                <a>US Storm Types</a>
+                </h3>
+                    <img class="img-responsive" src="images2/storm_type.png" alt="">
+                <br></br>
+                <p>Shows storm types in our dataset. The legend lists storm freq., and we see trends like Marine Thunderstorms all along the Atlantic Coast and debris flow (mudslides) on the Pacific Coast. Hail, Thunderstorms, and Floods are widespread, but certainly show some clustering and regional differences.</p>
+            </article>
+            
+            <article class="col-md-4 article-intro">
+                <h3>
+                <a>Storm Distribution</a>
+                </h3>
+                    <img class="img-responsive" src="images2/heatmap.png" alt="">
+                <br></br>
+                <p>This is a Google Maps heatmap showing distribution of all storm data across the US. It is important to see that our storms are concentrated East of the Rockies (perhaps simply due to reporting). Additionally, there is a concentration of storms along the Gulf of Mexico, and in Tornado Alley.</p>
+            </article>
+            
+            <article class="col-md-4 article-intro">
+                <h3>
+                <a>Damage Likelihood</a>
+                </h3>
+                    <img class="img-responsive" src="images2/damage_likelihood.png" alt="">
+                <br></br>
+                <p>This Carto images shows likelihood of a storm causing monetary damage. Dark squares means that most storms cause some damage. We see clear regional trends in where damage is caused like in the Ohio River Valley and along the SW southern border. Clearly, damage has spatial trends, which makes the other graphs here clearly relevant to our predictive power.</p>
+            </article>
+        </div>
+
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+        <br></br>
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.5) Demographic Data Exploration</h7>
+        <br></br>
+        <br></br>
+        <div class="row">
+
+            <article class="col-md-4 article-intro" style="width:75vw!important">
+
+                <a style="text-align: center!important">
+                    <img class="img-responsive" src="images2/demographic.png" style="margin: auto" >
+                </a>
+                <br></br>
+                <a style="text-align: center!important">
+                    <img class="img-responsive" src="images2/pop_density.png" style="margin: auto; width: 600px;
+                    height: auto!important" >
+                </a>
+                <br></br>
+
+                <p>The purpose of the first plot above was to confirm that we needed to normalize the data, particularly the demographic data, which was extremely right-skewed. In addition, the population density map confirms that our demographic data is a solid source, as it looks correct based on what we know about population in the US.</p>
+            </article>
+        </div>
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+
+
+        
+
+        <div class="horizontal_dotted_line"></div>
+        <div class="horizontal_dotted_line"></div>
+        <br></br>
+        <h7 style="font-size: 22px!important; text-decoration: underline">2.6) Monetary Response Distribution</h7>
+        <br></br>
+        <div class="row">
+
+
+            <article class="col-md-4 article-intro" style="width:90vw!important">
+                    <img class="img-responsive" src="images2/normalize.png" >
+                <br></br>
+
+                <p>The graphs above are a histogram of the DAMAGE_TOTAL variable (left), a histogram of the transformed DAMAGE_TOTAL variable using natural logarithm (center), and a histogram of the transformed DAMAGE_TOTAL variable conditioning on whether there was any damage at all (right). The normality exhibited in the third graph lets us know that if we build a classification model to predict any damage, and then regress conditional on that, we could have success predicting the log of DAMAGE_TOTAL because our response would be symmetric.</p>
+            </article>
+        </div>
+
+        <div id = 'classification'></div>
+        <br></br>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">3. Modeling Damage or Not
                     <small>Classification and Results</small>
                 </h1>
-                <h7 style="font-size: 22px!important; text-decoration: underline">Initial Data Intuition</h7>
-                <p>The data contained a ratio of no damage to damage of about 2:1. This is not too far from the ideal case of 1:1 in most classification settings. It was decided that a basic logistic ordinary least squares regression model would be run. What this does is relate the log of the probability of a case having damage to a linear combination of the predictors. This basic model had an accuracy of near 0.75, well above the most naive approach which would have about 66% accuracy if all cases were predicted to not have damage. The model has true negative of 0.86 and true positive of 0.55 and an ROC AUC of .81. An interpretation of this AUC is the probability that a randomly selected case with damage has a higher probability of having damage than a randomly selected case that did not have damage.</p>
+                <p>The first modeling step for this project is to classify whether a storm causes damage. Although this step does not directly help to administer aid, it is a step in that direction. To have a basic intuition of whether or not a storm causes damage is a step toward understanding the storm, and helps us learn which storms to focus on.</p>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">Predictor Selection</h7>
-                <p>Now that this baseline had been established, the next models were attempted to improve the predictive power of the model. First, more predictors were added to the logistic regression model, such as demographic information about the county where the weather event occurred, such as median household income, population density, and population size.</p>
-                <p>One-hot encoding counties was not considered due to the possibility of overfitting with so many counties in the USA, but the nearest WFO weather station was recorded as a one-hot encoded set of variables to gain more information on place beyond just state. This model did better [insert metrics].</p>
-                <p>Next, complex effects were added such as interaction terms. The “Magnitude” of the weather event means different things for different types of weather events; for a hail storm, it is the size of the hail, for a thunderstorm it might be the maximum sustained wind, etc. To address this, the interactions of the variable magnitude and the one-hot encoded weather event types were included in the model. Pairwise interactions between income, population density, and population were also included. The predictive power increased dramatically.</p>
+                <h7 style="font-size: 22px!important; text-decoration: underline">3.1) Initial Data Intuition</h7>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">K-Nearest Neighbors</h7>
-                <p>Next, the model building process pivoted direction; now instead of manipulating the predictors, the same predictors were used but for other families of models. A k-NN procedure was carried out which achieved strong predictive power on the test set. This k-NN approach is helpful because it does not assume anything about the underlying distribution of the responses and the how the data are related to each other, whereas logistic regression assumes that variables are evenly spread throughout predicted value (homoskedasticity) and that there is a linear relationship between the log odds of the probability of having damage and the predictors.</p>
+                <p>The data contained a ratio of no damage to damage of about 2:1. This is not too far from the ideal case of 1:1 in most classification settings. It was decided that a basic logistic ordinary least squares regression model would be run. What this does is relate the log of the probability of a case having damage to a linear combination of the predictors. This basic model had an accuracy of near 0.75, well above the most naive approach which would have about 66% accuracy if all cases were predicted to not have damage. The model has true negative of 0.86 and true positive of 0.55 and an area under the curve (AUC) of .81. </p>
+                <p>An interpretation of this AUC is the the expectation that a uniformly drawn random positive is ranked before a uniformly drawn random negative. In layman’s terms, AUC represents the tradeoff between allowing for more false positive and getting more true positives, and a higher AUC indicates a better model; an AUC of 1 represents the perfect classifier, while predicting all 0s (all false) would lead to an AUC of .5.</p>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">LDA, QDA</h7>
-                <p>Quadratic discriminant analysis and linear discriminant analysis were also completed, which relax some of the modeling assumptions of logistic regression. These did not improve the model.</p>
+                <h7 style="font-size: 22px!important; text-decoration: underline">3.2) Predictor Selection</h7>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">Decision Trees</h7>
-                <p>Next, decision trees were implemented. These are very interpretable because predictions can be achieved by following a tree of binary decisions related to predictors. The tree ended up being pretty deep with 82 predictors. Although this might increase worries of overfitting the data, because this value was chosen via cross validation in that it was selected based on performance on data that the model did not see during training, there is less concern about overfitting for the classification tree.</p>
+                <p>Now that this baseline had been established, we looked to curate a better set of predictors for future models. First, more predictors were added to the logistic regression model, such as demographic information about the county where the weather event occurred, such as median household income, population density, and population size.</p>
+                <p>One-hot encoding counties was not considered due to the possibility of overfitting with so many counties in the USA, but the nearest WFO weather station was recorded as a one-hot encoded set of variables to gain more information on place beyond just state.</p>
+                <p>Next, complex effects were added such as interaction terms. The “Magnitude” of the weather event means different things for different types of weather events; for a hail storm, it is the size of the hail, for a thunderstorm it might be the maximum sustained wind, etc. To address this, the interactions of the variable magnitude and the one-hot encoded weather event types were included in the model. Pairwise interactions between income, population density, and population were also included. </p>
+                <p>The predictive power increased dramatically, with a logistic regression on these set of predictors producing a model with an accuracy of 82% with an AUC of .896, much better than the baseline.</p>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">Random Forest</h7>
-                <p>The next step was a random forest. Random forest is a process that averages predictions from many individually weak decision trees that are usually shorter in depth and might only be trained on a random subset of predictors. Although initially the same depth from the decision tree was used, eventually it was decided that it is better in random forest to include weaker individual predictions and average over these. The random forest achieved large increases in predictive power. The importance of predictors was also considered; thunderstorm wind speed magnitude was an important predictor which is unsurprising, as well as population density, population, hail size, and income.</p>
+                <h7 style="font-size: 22px!important; text-decoration: underline">3.3) Trial and Error</h7>
                 <br></br>
-                <h7 style="font-size: 22px!important; text-decoration: underline">Ada-Boost</h7>
-                <p>An ada-boost method was also conducted. This is an iterative process which builds decision trees on the residuals of earlier, weaker model in order to improve prediction. This process improved predictive power over the logistic regression.</p>
+                <p>Next, the model building process pivoted direction; now instead of manipulating the predictors, the same predictors were used but for other families of models. We tried a few approaches that were not convincing, like k-Nearest Neighbors (k-NN) and Discriminant Analysis. k-NN is a non-parametric procedure, meaning that it does not rely on any underlying statistical assumptions about the data; it uses Euclidean distance to select the most similar observations based on the predictors, and then averages their response variables to make a prediction. k-NN had an AUC of .892, slightly worse than logistic regression.</p>
+                <p>Quadratic discriminant analysis (QDA) and linear discriminant analysis (LDA) were also completed, which make assume normality within the predictors and use Bayes Rule to classify the response from the predictors. These did not improve the model, which was expected as the quantitative predictors were shown in EDA to be highly skewed; standardization helped but not enough.</p>
+                <p>We also used the AdaBoost (Adaptive Boosting) procedure, which uses a procedure called gradient descent to iteratively train models (subsequent learners are changed in favor of observations misclassified by previous classifiers.). Thus, if not properly limited, AdaBoost can overfit massively, but we used cross-validation to choose its hyperparameters like the number of trees and the maximum depth of each model within the “bag.” This outperformed the previous models with a test accuracy of .901 and an AUC of .94.</p>
+                <br></br>
+                <h7 style="font-size: 22px!important; text-decoration: underline">3.4) Choosing a Model</h7>
+                <br></br>
+                <p>We ended up choosing the <b>Random Forest classifier</b> as our final model. We’ll get into why, but first, what is a Random Forest model? It based on the idea of a Decision Tree classifier, which uses a greedy algorithm to pick threshold values for predictors and assigns observations to a particular class based on those thresholds. The tree “splits,” or chooses a new threshold value for a particular predictor, in a way that maximizes the purity: each new region defined by the classification boundaries should be made up almost exclusively of one class.</p>
+                <p>Essentially, if we have k classes, we choose predictor j and threshold t_j that minimizes the average Gini Index over all regions, where the Gini index for region i is:</p>
+                <img class="img-responsive" src="images2/gini.png" style="margin: auto" >
+                <p>This is equivalent to a "soft" maximum for purity larger numbers (when squared) will dominate smaller numbers. We iterate over the predictor set, and only terminate the splitting when we reach a stopping criterion; common stopping conditions are a maximum depth of the tree, a minimum number of observations in each region, etc.</p>
+                <p>To create sufficiently complex decision boundaries, however, the tree needs to be very deep which leads to overfitting and high variance. To avoid this problem, we use the Random Forest procedure, which re-samples our data using a bootstrap approach and fits a number of Decision Tree models, averaging the results (using majority vote for classification) to make a prediction.</p>
+                <p>However, these trees would tend to be highly correlated because a couple of really useful predictors would be chosen each time for the splits; we showed in lecture that for $B$ identically but not independently distributed variables with pairwise correlation rho and variance sigma-squared, the variance of their mean would be:</p>
+                <img class="img-responsive" src="images2/rho.png" style="margin: auto" >
+                <p>Therefore, more trees can only reduce the second term and not the first, so without any limitations, there would be high correlation among trees and thus fail to solve high variance/over-fitting problem. To fix that, the Random Forest algorithm randomly selects a subset of the predictors that can be used at each split so that the trees will not all be the same.</p>
+                <p>Thus, we expected the Random Forest algorithm to perform quite well especially because there were a number of predictors that we expected to be important in classifying the response. We used cross-validation to simultaneously choose the optimal set of hyperparameters, namely the number of predictors for each split, the maximum depth of each tree, and the number of trees to fit for the model.</p>
+                <p>Ultimately, the Random Forest model did not disappoint; it had the <b>best test accuracy, .91</b>, and the <b>best AUC, .96</b>. However, beyond just excellent performance out of sample, it gave us a sense of predictor importance based on how they contributed to minimizing the Gini Index discussed above. According to our model, the most important predictors were a combination of a few things: interaction terms between MAGNITUDE and different EVENT_TYPE categories, demographic data (POPULATION, DENSITY, and HH_INCOME) and their pairwise interaction, specific months, and specific large municipalities (WFO categories).</p>
                 <br></br>
             </div>
         </div>
 
+        <div id = 'regression'></div>
+        <br></br>
+
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Modeling Monetary Damage
+                <h1 class="page-header">4. Modeling Monetary Damage
                     <small>Regression</small>
                 </h1>
-                <p>The next step in this model is to use regressions to predict monetary damage, in dollars. This step is crucial for making recommendations on the proper amount of aid required for storm relief.</p>
+                <p></p>
+                <p>Beyond classifying whether or not there is damage to something, we also want to predict the dollar amount of damage: DAMAGE_PROPERTY, the estimated amount of property damage caused by the storm (conditional on HAS_DAMAGE = 1). This step is crucial for making recommendations on the proper amount of aid required for storm relief. Because this amount is very right skewed in the data, a log transformation was conducted which made the response more symmetric (to see this graphically, look at Figure 9 in the EDA section). Models were run to predict this log transformed variable, which can easily be transformed back to obtain the actual damage prediction when used in the future.</p>
+                <br></br>
+                <h7 style="font-size: 22px!important; text-decoration: underline">4.1) Linear</h7>
+                <br></br>
+                <p>First, we tried ordinary least squares linear regression. Given a set of p predictors, linear regression fits the following model (where Y is the response and X is a predictor):</p>
+                <img class="img-responsive" src="images2/linear.png" style="margin: auto" >
+                <p>The model chooses coefficients, the beta values, as to minimize the sum of squared errors (where the “hat” indicates a fitted value from the regression model):</p>
+                <img class="img-responsive" src="images2/cost.png" style="margin: auto" >
+                <p>Using a limited set of predictors, basic ordinary least squares regression model yielded a R2 of 0.43 in the testing set. This served as our baseline model. Once interaction and polynomial terms were included, the <b>test R2 increased to 0.46</b>, indicating that those predictors were useful (we did not conduct extensive t-based inference because this was not the final model). We want a higher R2 for our model, as it represents the amount of variance in the response explained by the model. The statistic is given by the following equation:</p>
+                <img class="img-responsive" src="images2/r2.png" style="margin: auto" >
+                <br></br>
+                <p>This model was then evaluated for whether it is violating assumptions of ordinary least squares regression, which include normality, constant variance, and linearity of the residuals. To check these we plotted a histogram of the residuals and a residual scatter plot (against fitted values):</p>
+                <br></br>
+                <img class="img-responsive" src="images2/residual_plot.png" style="margin: auto; width: 600px;
+                    height: auto!important" >
+                    <br></br>
+                <img class="img-responsive" src="images2/residual_hist.png" style="margin: auto; width: 600px;
+                    height: auto!important" >
+                    <br></br>
+                <p>None of our assumptions seem to be violated. There is no evidence of non-linearity or heteroscedasticity (non-constant variance), and the residual histogram is fairly symmetric so we are comfortable with the normality assumption. This suggests that our OLS model is statistically rigorous.</p>
+                <p>LASSO and Ridge regularization did not improve our model, which is understandable because there was no evidence of overfitting (and these shrinkage methods bias our coefficient estimates mathematically).</p>
+                <br></br>
+                <h7 style="font-size: 22px!important; text-decoration: underline">4.2) Random Forest</h7>
+                <br></br>
+                <p>We tried k-NN regression, but it did not perform well out of sample. The model we decided to use for predicting the amount of was a Random Forest Regressor, which is very similar to the Random Forest Classifier, but now rather than classifying the response based on the majority in a region (based on predictors), the model averages the response values of observations in a region and uses that as the prediction. In addition, the trees upon which the Random Forest is built minimize a new function, the sum of the standard deviation in each region.</p>
+                <p>We again used cross-validation to choose the hyperparameters of the model, and were able to obtain a <b>test R2 of .773</b>, a significant upgrade from OLS. Again, we were not surprised that Random Forest was so adept at making predictions because of the fact that there were a number of important features rather than just a few which would cause each tree to be biased.</p>
+                <br></br>
             </div>
         </div>
 
+        <div id = 'conclusion'></div>
+        <br></br>
+
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Conclusion
+                <h1 class="page-header">5. Conclusion
                     <small>Findings and Recommendations</small>
                 </h1>
-                <p>Throughout this project, we had the goal of predicting storm damage.</p>
+                <h7 style="font-size: 22px!important; text-decoration: underline">5.1) Conclusion and Key Results</h7>
+                <br></br>
+                <p>dasuihfksdfoijsdfjaspjd;kasdlkaslhfhlsdlhjfdsklflksdjflkjasKDL</p>
+                <br></br>
+                <h7 style="font-size: 22px!important; text-decoration: underline">5.2) Recommendations for Storm Aid</h7>
+                <br></br>
+                <p> SIAFHLSHDJLF SBDFLIHadihalhiLfl ensdfjdsflas,jnfnqLJFLJE J</p>
+                <br></br>
             </div>
         </div>
         <!-- /.row -->
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">What's Next?
+                <h1 class="page-header">6. What's Next?
                     <small>Possibilities for Future Work</small>
                 </h1>
                 <p>In this project, we were pleased with the way we were able to model many different types of storms that occur in the US. However, there is always work to be done to improve storm prediction. One type of storm that this model fails to consider is hurricanes, because they do not appear in this dataset. Hurricanes are arguably the most significant type of storm to model since they cause so much destruction and damage. However, hurricanes are on a whole different scale from the other types of storms that we are analyzing in this project. In order to model hurricanes, we would have to find hurricane data, and build a whole new model to analyze hurricanes separately. It would not make sense to classify as Damage-Causing or Not, because almost all hurricanes cause damage. Instead, we could determine a threshold for damage where a hurricane becomes catastrophic, and classify if a storm will be a Catastrophe or Not before regressing to predict total damage. Similar to this project, we would attempt to pull in data about the trajectory and cities/geographical features in the way. If we took hurricane data and built a new model similar to this one, but specific to hurricane prediction, we could greatly improve resource allocation.</p>
@@ -407,16 +486,17 @@
         
         <div class="small-print">
         	<div class="container">
-        		<p>Thanks for reading! We hope you enjoyed.</p>
+        		<p><i>Thanks for reading! We hope you enjoyed.</i></p>
         	</div>
         </div>
 
         <div class="small-print">
             <div class="container">
-                <h7>Sources</h7>
+                <h7 style="text-decoration: underline!important">Sources</h7>
                 <p></p>
-                <p>kjnsafsafjasjldjk</p>
-                <p>fkbdslfasjkdjlasjl</p>
+                <p>http://www.denverpost.com/2017/05/23/hailstorm-costliest-ever-metro-denver/</p>
+                <p>https://www.washingtonpost.com/news/post-nation/wp/2017/12/05/only-26-percent-of-hurricane-harvey-survivors-have-had-fema-aid-request-approved-survey-finds/?utm_term=.af5398ae7193</p>
+                <p>http://www.corpscpc.noaa.gov/procedures/corps_directives/chapter_1/ncd_ch1.pdf</p>
             </div>
         </div>
 	</footer>
