@@ -25,6 +25,16 @@
 </head>
 
 <style>
+    .fblogo {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        height: 30px; 
+    }
+
+    #images{
+        text-align:center;
+    }
     #carousel {
         width: 100%;
         height: 150px;
@@ -458,11 +468,22 @@
                 </h1>
                 <h7 style="font-size: 22px!important; text-decoration: underline">5.1) Conclusion and Key Results</h7>
                 <br></br>
-                <p>dasuihfksdfoijsdfjaspjd;kasdlkaslhfhlsdlhjfdsklflksdjflkjasKDL</p>
+                <p>If you take anything away from what you’ve read above, it’s that it is certainly possible to predict whether a storm will cause damage and if so, how much damage will occur. Using the Random Forest procedure, we were able to achieve an AUC of .96 for the classification model and an out-of-sample R2 of .77 for the regression model. Both are impressive metrics, especially given the limited parameter set we chose to operate with. It shows that certain ex-ante information can be used to help local governments, aid agencies, and insurance companies prepare for weather events.</p>
+                <p>Delving deeper, the models we explored also gave us specific insights that can potentially assist those same agents. On one hand, we were able to get a better sense of which predictors were most useful for classifying damage or no damage, and which variables were the most predictive in estimating the amount of damage. Below we see the 30 most important predictors for the Random Forest classifiers (regression on the left, classification on the right) in terms of their contribution to the purity of the decision boundaries, based on the Gini Index metric discussed above:</p>
                 <br></br>
                 <h7 style="font-size: 22px!important; text-decoration: underline">5.2) Recommendations for Storm Aid</h7>
                 <br></br>
-                <p> SIAFHLSHDJLF SBDFLIHadihalhiLfl ensdfjdsflas,jnfnqLJFLJE J</p>
+                <p>Delving deeper, the models we explored also gave us specific insights that can potentially assist those same agents. On one hand, we were able to get a better sense of which predictors were most useful for classifying damage or no damage, and which variables were the most predictive in estimating the amount of damage. Below we see the 30 most important predictors for the Random Forest classifiers (regression on the left, classification on the right) in terms of their contribution to the purity of the decision boundaries, based on the Gini Index metric discussed above:</p>
+                <br></br>
+                <div id="images">
+                    <a><img class="fblogo" border="0" src="images2/pred1.png" style="width: 400px;
+                    height: auto!important" /></a>
+                    <a><img class="fblogo" border="0" src="images2/pred2.png" style="width: 400px;
+                    height: auto!important" /></a>
+                </div>​
+                <br></br>
+                <p>As we can see, they overlap significantly. THUNDERSTORM_WIND’s main effect and interaction with MAGNITUDE were important in both models, as were a number of municipalities. On top of that, there are several EVENT_TYPE indicators (like “Flash Flood”) and MONTH indicators (like June) that appear on both. Finally, the demographic variables (POPULATION, HH_INCOME, and DENSITY) are very important predictors, whether as main effects, polynomial effects, or interaction effects. This signals that understanding the type of storm, the demographic data of the affected area, and the time of year/part of the country are all very important for key agents.</p>
+                <p>We also use the OLS model to gain some intuition as to how certain predictors affect the amount of damage caused. We found that the “Marine Strong Wind” storm type had the largest coefficient of any predictor, meaning that it causes the most damage of any storm type when controlling for other variables. On the other hand, the “Thunderstorm Wind” storm type had the smallest (most negative) coefficient of any predictor, meaning that it causes the least damage of any storm type when controlling for other variables. We also see that flood-type events cause some of the most damage, meaning that local governments and insurance agencies should be wary of them. Beyond the EVENT_TYPE indicators, certain municipalities and months tend to be associated with more or less damage, which are also pieces of information that these agents can take into account.</p>
                 <br></br>
             </div>
         </div>
