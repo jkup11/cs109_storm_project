@@ -141,35 +141,35 @@
                 <div class="w3-content w3-display-container"  style="width:75vw!important">
 
                 <div class="w3-display-container mySlides">
-                  <img class="img-responsive" src="images2/harvey.jpg" style="width:100%">
+                  <img class="img-responsive" src="images3/harvey.jpg" style="width:100%">
                   <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-black">
                     Hurricane Harvey (Houston)
                   </div>
                 </div>
 
                 <div class="w3-display-container mySlides">
-                  <img class="img-responsive" src="images2/mudslide.jpg" style="width:100%">
+                  <img class="img-responsive" src="images3/mudslide.jpg" style="width:100%">
                   <div class="w3-display-bottomright w3-large w3-container w3-padding-16 w3-black">
                     Pacific Coast Mudslide (CA)
                   </div>
                 </div>
 
                 <div class="w3-display-container mySlides">
-                  <img class="img-responsive" src="images2/hail.jpg" style="width:100%">
+                  <img class="img-responsive" src="images3/hail.jpg" style="width:100%">
                   <div class="w3-display-topleft w3-large w3-container w3-padding-16 w3-black">
                     Hail Storm (Midwest)
                   </div>
                 </div>
 
                 <div class="w3-display-container mySlides">
-                  <img class="img-responsive" src="images2/flood.jpg" style="width:100%">
+                  <img class="img-responsive" src="images3/flood.jpg" style="width:100%">
                   <div class="w3-display-topright w3-large w3-container w3-padding-16 w3-black">
                     Flooding (Alabama)
                   </div>
                 </div>
 
                 <div class="w3-display-container mySlides">
-                  <img class="img-responsive" src="images2/tornado.jpg" style="width:100%">
+                  <img class="img-responsive" src="images3/tornado.jpg" style="width:100%">
                   <div class="w3-display-middle w3-large w3-container w3-padding-16 w3-black">
                     Tornado (Kansas)
                   </div>
@@ -236,9 +236,9 @@
             <br></br>
                 <p>The first predictor we were curious to explore was storm type, since our previous experiences (e.g. hearing about storms on the news) led us to believe that tornados and floods were the most costly types of storms. We wanted to confirm this hypothesis, as well as others, about storm type, and so we generated plots showing (1) which storm type accounted for the highest number of damage-causing storms and (2) which storm type caused the most damage (in dollars) on a per-storm basis. These two plots are displayed below.</p>
 
-                <img class="img-responsive" src="images2/freq_damage_storm_type.png" alt="">
+                <img class="img-responsive" src="images3/freq_damage_storm_type.png" alt="">
                 <br></br>
-                <img class="img-responsive" src="images2/ave_damage_storm_type.png" alt="">
+                <img class="img-responsive" src="images3/ave_damage_storm_type.png" alt="">
                 <br></br>
                 
                 <p>Contrary to what we believed, thunderstorm winds accounted for the highest number of damaging storms, with floods (and flash floods) accounting for the second highest number. As we predicted, floods caused the most damage per storm of all of the storm types. After conducting qualitative research, our logical conclusions for these findings are that tornadoes do not cause a lot of damage because they tend to take place in sparsely populated areas in the Midwest (particularly in a region colloquially called “Tornado Alley”), and also that winds can cause a lot of damage by downing trees and power lines. Our reasoning for the damaging nature of floods is that replacing flooring can be very expensive (upwards of thousands of dollars per home).</p>
@@ -256,11 +256,11 @@
             <br></br>
                 <p>Diving deeper into our dataset, the next thing we noticed was how much information about location the dataset contained. From time zone to state to municipality (WFO), to begin_long, begin_lat, end_long, and end_lat, we counted 17 potential predictors in total that corresponded to locational data. To gain better intuition about them, and also figure out which ones to drop to avoid overfitting on location, we checked which predictors had clear correlations with the frequency of damage-causing storms. In the three figures below, we display which timezones, states, and municipalities recorded the most damage-causing storms. We decided that each of these three predictors were important and should be kept in our model. We describe which predictors we dropped in the next section (Dropping Predictors).</p>
                 <br></br>
-                    <img class="img-responsive" src="images2/freq_damage_timezone.png" alt="">
+                    <img class="img-responsive" src="images3/freq_damage_timezone.png" alt="">
                 <br></br>
-                    <img class="img-responsive" src="images2/freq_damage_state.png" alt="">
+                    <img class="img-responsive" src="images3/freq_damage_state.png" alt="">
                 <br></br>
-                    <img class="img-responsive" src="images2/freq_damage_wfo.png" alt="">
+                    <img class="img-responsive" src="images3/freq_damage_wfo.png" alt="">
                 <br></br>
 
                 <p>Above, we see that most damage-causing storms take place in the Central and Eastern Time Zones. We were surprised that there were so many more storms here compared with the Pacific and Mountain Time Zones, but these results ultimately make sense because thunderstorms accounted for the highest number of damaging storms, and most thunderstorms take place on the east coast where it is more humid than the west coast. Next, we concluded that state was a promising predictor since some states have many more storm recordings than others. For instance, Pennsylvania had the most storms with over 1,500 storms while Oregon had fewer than 30 storms. We made the same conclusion for WFO (Municipality), with some municipalities having much more storms than others. The municipality with the highest damaging storm count by far is JAN, which corresponds to Jackson, Mississippi. Mississippi was the state with the second highest number of damaging storms, so this result made sense.</p>
@@ -280,9 +280,9 @@
                 <br></br>
                 <p>Finally, we checked temporal information like month and time of day, both of which had a significant impact on the frequency of damaging storms.</p>
                 <br></br>
-                    <img class="img-responsive" src="images2/freq_damage_month.png" >
+                    <img class="img-responsive" src="images3/freq_damage_month.png" >
                 <br></br>
-                    <img class="img-responsive" src="images2/freq_damage_hour.png" >
+                    <img class="img-responsive" src="images3/freq_damage_hour.png" >
                 <br></br>
 
                 <p>As we can see, more storms take place during the summer months, which leads us to believe that thunderstorms are more damaging than snowstorms, etc. Also, more storms take place in the afternoon and evening hours, which is surprising since storms take place around the clock. Our conclusion from this result is that people tend to log storm damage in the waking hours of the day. More importantly than the logical reasoning behind these temporal predictors, we confirm that we want to keep them as predictors in our models. </p>
@@ -303,7 +303,7 @@
                 <h3>
                 <a>US Storm Types</a>
                 </h3>
-                    <img class="img-responsive" src="images2/storm_type.png" alt="">
+                    <img class="img-responsive" src="images3/storm_type.png" alt="">
                 <br></br>
                 <p>Shows storm types in our dataset. The legend lists storm freq., and we see trends like Marine Thunderstorms all along the Atlantic Coast and debris flow (mudslides) on the Pacific Coast. Hail, Thunderstorms, and Floods are widespread, but certainly show some clustering and regional differences.</p>
             </article>
@@ -312,7 +312,7 @@
                 <h3>
                 <a>Storm Distribution</a>
                 </h3>
-                    <img class="img-responsive" src="images2/heatmap.png" alt="">
+                    <img class="img-responsive" src="images3/heatmap.png" alt="">
                 <br></br>
                 <p>This is a Google Maps heatmap showing distribution of all storm data across the US. It is important to see that our storms are concentrated East of the Rockies (perhaps simply due to reporting). Additionally, there is a concentration of storms along the Gulf of Mexico, and in Tornado Alley.</p>
             </article>
@@ -321,7 +321,7 @@
                 <h3>
                 <a>Damage Likelihood</a>
                 </h3>
-                    <img class="img-responsive" src="images2/damage_likelihood.png" alt="">
+                    <img class="img-responsive" src="images3/damage_likelihood.png" alt="">
                 <br></br>
                 <p>This Carto images shows likelihood of a storm causing monetary damage. Dark squares means that most storms cause some damage. We see clear regional trends in where damage is caused like in the Ohio River Valley and along the SW southern border. Clearly, damage has spatial trends, which makes the other graphs here clearly relevant to our predictive power.</p>
             </article>
@@ -340,11 +340,11 @@
             <article class="col-md-4 article-intro" style="width:75vw!important">
 
                 <a style="text-align: center!important">
-                    <img class="img-responsive" src="images2/demographic.png" style="margin: auto" >
+                    <img class="img-responsive" src="images3/demographic.png" style="margin: auto" >
                 </a>
                 <br></br>
                 <a style="text-align: center!important">
-                    <img class="img-responsive" src="images2/pop_density.png" style="margin: auto; width: 600px;
+                    <img class="img-responsive" src="images3/pop_density.png" style="margin: auto; width: 600px;
                     height: auto!important" >
                 </a>
                 <br></br>
@@ -368,7 +368,7 @@
 
 
             <article class="col-md-4 article-intro" style="width:90vw!important">
-                    <img class="img-responsive" src="images2/normalize.png" >
+                    <img class="img-responsive" src="images3/normalize.png" >
                 <br></br>
 
                 <p>The graphs above are a histogram of the DAMAGE_TOTAL variable (left), a histogram of the transformed DAMAGE_TOTAL variable using natural logarithm (center), and a histogram of the transformed DAMAGE_TOTAL variable conditioning on whether there was any damage at all (right). The normality exhibited in the third graph lets us know that if we build a classification model to predict any damage, and then regress conditional on that, we could have success predicting the log of DAMAGE_TOTAL because our response would be symmetric.</p>
@@ -407,11 +407,11 @@
                 <br></br>
                 <p>We ended up choosing the <b>Random Forest classifier</b> as our final model. We’ll get into why, but first, what is a Random Forest model? It based on the idea of a Decision Tree classifier, which uses a greedy algorithm to pick threshold values for predictors and assigns observations to a particular class based on those thresholds. The tree “splits,” or chooses a new threshold value for a particular predictor, in a way that maximizes the purity: each new region defined by the classification boundaries should be made up almost exclusively of one class.</p>
                 <p>Essentially, if we have k classes, we choose predictor j and threshold t_j that minimizes the average Gini Index over all regions, where the Gini index for region i is:</p>
-                <img class="img-responsive" src="images2/gini.png" style="margin: auto" >
+                <img class="img-responsive" src="images3/gini.png" style="margin: auto" >
                 <p>This is equivalent to a "soft" maximum for purity larger numbers (when squared) will dominate smaller numbers. We iterate over the predictor set, and only terminate the splitting when we reach a stopping criterion; common stopping conditions are a maximum depth of the tree, a minimum number of observations in each region, etc.</p>
                 <p>To create sufficiently complex decision boundaries, however, the tree needs to be very deep which leads to overfitting and high variance. To avoid this problem, we use the Random Forest procedure, which re-samples our data using a bootstrap approach and fits a number of Decision Tree models, averaging the results (using majority vote for classification) to make a prediction.</p>
                 <p>However, these trees would tend to be highly correlated because a couple of really useful predictors would be chosen each time for the splits; we showed in lecture that for $B$ identically but not independently distributed variables with pairwise correlation rho and variance sigma-squared, the variance of their mean would be:</p>
-                <img class="img-responsive" src="images2/rho.png" style="margin: auto" >
+                <img class="img-responsive" src="images3/rho.png" style="margin: auto" >
                 <p>Therefore, more trees can only reduce the second term and not the first, so without any limitations, there would be high correlation among trees and thus fail to solve high variance/over-fitting problem. To fix that, the Random Forest algorithm randomly selects a subset of the predictors that can be used at each split so that the trees will not all be the same.</p>
                 <p>Thus, we expected the Random Forest algorithm to perform quite well especially because there were a number of predictors that we expected to be important in classifying the response. We used cross-validation to simultaneously choose the optimal set of hyperparameters, namely the number of predictors for each split, the maximum depth of each tree, and the number of trees to fit for the model.</p>
                 <p>Ultimately, the Random Forest model did not disappoint; it had the <b>best test accuracy, .91</b>, and the <b>best AUC, .96</b>. However, beyond just excellent performance out of sample, it gave us a sense of predictor importance based on how they contributed to minimizing the Gini Index discussed above. According to our model, the most important predictors were a combination of a few things: interaction terms between MAGNITUDE and different EVENT_TYPE categories, demographic data (POPULATION, DENSITY, and HH_INCOME) and their pairwise interaction, specific months, and specific large municipalities (WFO categories).</p>
@@ -433,18 +433,18 @@
                 <h7 style="font-size: 22px!important; text-decoration: underline">4.1) Linear</h7>
                 <br></br>
                 <p>First, we tried ordinary least squares linear regression. Given a set of p predictors, linear regression fits the following model (where Y is the response and X is a predictor):</p>
-                <img class="img-responsive" src="images2/linear.png" style="margin: auto" >
+                <img class="img-responsive" src="images3/linear.png" style="margin: auto" >
                 <p>The model chooses coefficients, the beta values, as to minimize the sum of squared errors (where the “hat” indicates a fitted value from the regression model):</p>
-                <img class="img-responsive" src="images2/cost.png" style="margin: auto" >
+                <img class="img-responsive" src="images3/cost.png" style="margin: auto" >
                 <p>Using a limited set of predictors, basic ordinary least squares regression model yielded a R2 of 0.43 in the testing set. This served as our baseline model. Once interaction and polynomial terms were included, the <b>test R2 increased to 0.46</b>, indicating that those predictors were useful (we did not conduct extensive t-based inference because this was not the final model). We want a higher R2 for our model, as it represents the amount of variance in the response explained by the model. The statistic is given by the following equation:</p>
-                <img class="img-responsive" src="images2/r2.png" style="margin: auto" >
+                <img class="img-responsive" src="images3/r2.png" style="margin: auto" >
                 <br></br>
                 <p>This model was then evaluated for whether it is violating assumptions of ordinary least squares regression, which include normality, constant variance, and linearity of the residuals. To check these we plotted a histogram of the residuals and a residual scatter plot (against fitted values):</p>
                 <br></br>
-                <img class="img-responsive" src="images2/residual_plot.png" style="margin: auto; width: 600px;
+                <img class="img-responsive" src="images3/residual_plot.png" style="margin: auto; width: 600px;
                     height: auto!important" >
                     <br></br>
-                <img class="img-responsive" src="images2/residual_hist.png" style="margin: auto; width: 600px;
+                <img class="img-responsive" src="images3/residual_hist.png" style="margin: auto; width: 600px;
                     height: auto!important" >
                     <br></br>
                 <p>None of our assumptions seem to be violated. There is no evidence of non-linearity or heteroscedasticity (non-constant variance), and the residual histogram is fairly symmetric so we are comfortable with the normality assumption. This suggests that our OLS model is statistically rigorous.</p>
@@ -476,9 +476,9 @@
                 <p>Delving deeper, the models we explored also gave us specific insights that can potentially assist those same agents. On one hand, we were able to get a better sense of which predictors were most useful for classifying damage or no damage, and which variables were the most predictive in estimating the amount of damage. Below we see the 30 most important predictors for the Random Forest classifiers (regression on the left, classification on the right) in terms of their contribution to the purity of the decision boundaries, based on the Gini Index metric discussed above:</p>
                 <br></br>
                 <div id="images">
-                    <a><img class="fblogo" border="0" src="images2/pred1.png" style="width: 400px;
+                    <a><img class="fblogo" border="0" src="images3/pred1.png" style="width: 400px;
                     height: auto!important" /></a>
-                    <a><img class="fblogo" border="0" src="images2/pred2.png" style="width: 400px;
+                    <a><img class="fblogo" border="0" src="images3/pred2.png" style="width: 400px;
                     height: auto!important" /></a>
                 </div>​
                 <br></br>
